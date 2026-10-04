@@ -1,4 +1,6 @@
-pymupdf
-googletrans
-convertapi
-p2j
+# Runtime dependencies for the web app (also what Streamlit Community Cloud installs).
+# For the CLI and Python API: pip install -e .   For the offline engine: pip install -e ".[indictrans]"
+pymupdf>=1.24.11
+requests>=2.31
+python-dotenv>=1.0
+streamlit>=1.40

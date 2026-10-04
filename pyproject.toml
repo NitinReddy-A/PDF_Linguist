@@ -1,0 +1,66 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "pdf-linguist"
+version = "2.0.0"
+description = "Layout-preserving PDF translation, built for Indian scripts: HarfBuzz-shaped output, OCR for scans, legacy-font detection."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+keywords = ["pdf", "translation", "indic", "kannada", "hindi", "ocr", "harfbuzz", "pymupdf"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: Hindi",
+    "Natural Language :: Kannada",
+    "Natural Language :: Tamil",
+    "Natural Language :: Telugu",
+    "Natural Language :: Malayalam",
+    "Natural Language :: Bengali",
+    "Natural Language :: Marathi",
+    "Natural Language :: Panjabi",
+    "Natural Language :: Urdu",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Office/Business",
+]
+dependencies = [
+    "pymupdf>=1.24.11",
+    "requests>=2.31",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+app = ["streamlit>=1.40"]
+indictrans = ["torch>=2.1", "transformers>=4.40", "sentencepiece>=0.2", "IndicTransToolkit>=1.0"]
+dev = ["pytest>=8", "ruff>=0.6"]
+
+[project.scripts]
+pdf-linguist = "pdf_linguist.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/NitinReddy-A/PDF_Linguist"
+Issues = "https://github.com/NitinReddy-A/PDF_Linguist/issues"
+
+[tool.setuptools]
+packages = ["pdf_linguist"]
+
+[tool.setuptools.package-data]
+pdf_linguist = ["fonts/*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+filterwarnings = ["ignore:builtin type .* has no __module__ attribute:DeprecationWarning"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
+ignore = ["RUF001", "RUF002", "RUF003"]  # Indic and typographic characters are intentional

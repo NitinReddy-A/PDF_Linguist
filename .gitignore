@@ -1,1 +1,31 @@
-virtual-env
+# Environment and secrets
+.env
+.env.*
+!.env.example
+.streamlit/secrets.toml
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+virtual-env/
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Translation outputs and working files
+*.pdf
+!examples/sample.pdf
+*.docx
+*.json
+
+# Editors and OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
