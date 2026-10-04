@@ -60,6 +60,7 @@ filterwarnings = ["ignore:builtin type .* has no __module__ attribute:Deprecatio
 [tool.ruff]
 line-length = 120
 target-version = "py310"
+include = ["*.py", "**/pyproject.toml"]  # code only: README/CONTRIBUTING snippets are prose
 
 [tool.ruff.lint]
 select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF"]
